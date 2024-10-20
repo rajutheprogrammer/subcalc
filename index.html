@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marks Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 50px auto;
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        h2 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Marks Calculator</h1>
+        <div class="input-group">
+            <label for="pt">PT (10):</label>
+            <input type="number" id="pt" placeholder="Enter marks" required>
+        </div>
+        <div class="input-group">
+            <label for="nb">NB (5):</label>
+            <input type="number" id="nb" placeholder="Enter marks" required>
+        </div>
+        <div class="input-group">
+            <label for="se">SE (5):</label>
+            <input type="number" id="se" placeholder="Enter marks" required>
+        </div>
+        <div class="input-group">
+            <label for="hy">HY (100):</label>
+            <input type="number" id="hy" placeholder="Enter marks" required>
+        </div>
+        <button id="calculate">Calculate</button>
+        <h2 id="result"></h2>
+    </div>
+    <script>
+        document.getElementById("calculate").addEventListener("click", function() {
+            // Get marks from input fields
+            const pt = parseFloat(document.getElementById("pt").value) || 0;
+            const nb = parseFloat(document.getElementById("nb").value) || 0;
+            const se = parseFloat(document.getElementById("se").value) || 0;
+            const hy = parseFloat(document.getElementById("hy").value) || 0;
+
+            // Calculate total
+            const total = pt + nb + se + hy;
+
+            // Determine grade
+            let grade;
+            if (total >= 91) grade = "A1";
+            else if (total >= 81) grade = "A2";
+            else if (total >= 71) grade = "B1";
+            else if (total >= 61) grade = "B2";
+            else if (total >= 51) grade = "C1";
+            else if (total >= 41) grade = "C2";
+            else if (total >= 33) grade = "D";
+            else if (total >= 21) grade = "E1 (Fail)";
+            else grade = "E2 (Fail)";
+
+            // Display result
+            document.getElementById("result").innerHTML = `Total Marks: ${total}, Grade: ${grade}`;
+        });
+    </script>
+</body>
+</html>
